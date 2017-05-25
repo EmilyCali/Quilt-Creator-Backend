@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     #find the user by the unique username
     user = User.find_by(username: params[:user][:username])
     #if the user and the authentication match
-    if user && authenticate(params[:user][:password])
+    if user && user.authenticate(params[:user][:password])
       #give the user a token
       token = create_token(user.id, user.username)
       #let them be logged in and have access
@@ -66,17 +66,17 @@ class UsersController < ApplicationController
   private #================================
 
     def create_token(id, username)
-      JWT.encode(payload(id, username), ENV["JWT_SECRET"], ["HS256"])
+      JWT.encode(payload(id, username), ENV['JWT_SECRET'], 'HS256')
     end
 
     #set header payload and signature validations
     def payload(id, username)
       {
-        exp: (Time.now + 30.minutes).to_i
-        iat: Time.now.to_i
+        exp: (Time.now + 30.minutes).to_i,
+        iat: Time.now.to_i,
         iss: ENV["JWT_ISSUER"],
         user: {
-          id: id
+          id: id,
           username: username
         }
       }
