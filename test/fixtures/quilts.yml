@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_colors: 1
+  size_block: 1
+  size_quilt: MyString
+  difficulty: MyString
+  piece_size: 1
+
+two:
+  num_colors: 1
+  size_block: 1
+  size_quilt: MyString
+  difficulty: MyString
+  piece_size: 1

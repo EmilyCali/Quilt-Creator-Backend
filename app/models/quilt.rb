@@ -1,0 +1,2 @@
+class Quilt < ApplicationRecord
+end
