@@ -10,19 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525201545) do
+ActiveRecord::Schema.define(version: 20170527235616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "quilts", force: :cascade do |t|
-    t.integer  "num_colors"
-    t.integer  "size_block"
-    t.string   "size_quilt"
+  create_table "blocks", force: :cascade do |t|
+    t.string   "title"
     t.string   "difficulty"
-    t.integer  "piece_size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pieces", force: :cascade do |t|
+    t.string   "color"
+    t.integer  "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.integer  "block_id"
+    t.integer  "piece_id"
+    t.integer  "grid_position"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["block_id"], name: "index_positions_on_block_id", using: :btree
+    t.index ["piece_id"], name: "index_positions_on_piece_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +48,6 @@ ActiveRecord::Schema.define(version: 20170525201545) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "positions", "blocks"
+  add_foreign_key "positions", "pieces"
 end

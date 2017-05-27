@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  block: one
+  piece: one
+  grid_position: 1
+
+two:
+  block: two
+  piece: two
+  grid_position: 1

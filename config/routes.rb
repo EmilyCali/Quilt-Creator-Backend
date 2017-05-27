@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :positions
+  resources :pieces
+  resources :blocks
   resources :users do
     collection do
       post "/login", to: "users#login"
