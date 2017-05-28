@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :quilt_blocks
   resources :positions
   resources :pieces
   resources :blocks

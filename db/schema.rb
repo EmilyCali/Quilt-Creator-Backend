@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170527235616) do
+ActiveRecord::Schema.define(version: 20170528190312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20170527235616) do
     t.datetime "updated_at",    null: false
     t.index ["block_id"], name: "index_positions_on_block_id", using: :btree
     t.index ["piece_id"], name: "index_positions_on_piece_id", using: :btree
+  end
+
+  create_table "quilt_blocks", force: :cascade do |t|
+    t.string   "img"
+    t.integer  "num_pieces"
+    t.decimal  "piece_size"
+    t.string   "difficulty"
+    t.string   "title"
+    t.string   "style"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

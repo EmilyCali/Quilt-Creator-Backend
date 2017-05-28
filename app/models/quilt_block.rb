@@ -1,0 +1,2 @@
+class QuiltBlock < ApplicationRecord
+end
