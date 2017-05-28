@@ -5,12 +5,12 @@ class BlocksController < ApplicationController
   def index
     @blocks = Block.all
 
-    render json: @blocks
+    render json: @blocks.to_json(include: :pieces)
   end
 
   # GET /blocks/1
   def show
-    render json: @block
+    render json: @block.to_json(include: :pieces)
   end
 
   # POST /blocks
