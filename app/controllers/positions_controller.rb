@@ -26,6 +26,7 @@ class PositionsController < ApplicationController
 
   # PATCH/PUT /positions/1
   def update
+    #validate update with id check
     if @position.update(position_params)
       render json: @position
     else
@@ -35,6 +36,12 @@ class PositionsController < ApplicationController
 
   # DELETE /positions/1
   def destroy
+    #validate destroy with the ids
+    #if @recipe.user_id == @user.id
+      #@recipe.destroy
+      #render json: {status: 200, message: "DELETED"}
+    #else
+      #render json: {status: 401, message: "You don't have permission to delete a recipe that isn't yours!"}
     @position.destroy
   end
 

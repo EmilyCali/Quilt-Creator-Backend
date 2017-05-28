@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   #user needs to be authorized before all routes but for login create and index
   before_action :authorize_user, except: [:login, :create, :index]
 
+#CHANGE STATUSES TO 401 and 201
+
   #user can login with authentication and and json web tokens
   def login
     #find the user by the unique username
@@ -60,6 +62,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
+    #validate destroy with current user
     @user.destroy
   end
 

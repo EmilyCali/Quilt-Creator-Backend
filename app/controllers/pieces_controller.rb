@@ -26,6 +26,7 @@ class PiecesController < ApplicationController
 
   # PATCH/PUT /pieces/1
   def update
+    #validate
     if @piece.update(piece_params)
       render json: @piece
     else
@@ -35,6 +36,7 @@ class PiecesController < ApplicationController
 
   # DELETE /pieces/1
   def destroy
+    #validate
     @piece.destroy
   end
 
