@@ -6,7 +6,8 @@ class User < ApplicationRecord
   #built in password securing
   has_secure_password
   #one to many relationship
-  has_many :quilts
+  #has_many :quilts
 
+  has_many :quilt_blocks
   #validates_associated :quilts
 end
