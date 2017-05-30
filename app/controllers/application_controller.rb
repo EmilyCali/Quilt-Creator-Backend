@@ -37,10 +37,7 @@ class ApplicationController < ActionController::API
     User.find(decoded_jwt[0]["user"]["id"])
   end
 
-  #show the user if they are the one logged in
-  def show
-    render json: get_current_user
-  end
+  
 
   #check the current user against the id to validate the authorization
   def authorize_user
@@ -48,5 +45,12 @@ class ApplicationController < ActionController::API
     puts "params #{params[:id]}"
     render json: {status: 401, message: "unauthorized"} unless get_current_user.id == params[:id].to_i
   end
+
+  # def authorize_quilt_create
+  #   puts "AUTHORIZE QUILT BLOCK CREATE"
+  #   puts "user id: #{get_current_user.id}"
+  #   puts "params #{quilt_block_params[:user_id]}"
+  #   render json: {status: 401, message: "Unauthrized"} unless get_current_user.id == quilt_block_params[:user_id]
+  # end
 
 end

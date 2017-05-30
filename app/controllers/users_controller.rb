@@ -32,8 +32,13 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1
+  # def show
+  #   render json: @user
+  # end
+
+  #show the user if they are the one logged in
   def show
-    render json: @user
+    render json: get_current_user
   end
 
   # POST /users
@@ -92,7 +97,7 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :password_digest, :years_quilting, :favorite_block)
+      params.require(:user).permit(:username, :password, :password_confirmation, :password_digest, :years_quilting, :favorite_block, :id)
     end
 
 end
