@@ -35,9 +35,11 @@ class QuiltBlocksController < ApplicationController
     #@current_user = #User.find(get_current_user.id)
     #p @current_user
     @quilt_block = QuiltBlock.new(quilt_block_params)
-    @user = get_current_user
+    #@user = get_current_user
+
     #@quilt_block.user_id = @userID
-    @quilt_block.user_id = @user.id
+    #@quilt_block.user_id = @user.id
+
     # p @current_user.id
     # quilt_block_params[:user_id] = @current_user.id
 

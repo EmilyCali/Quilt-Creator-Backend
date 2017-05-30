@@ -32,14 +32,10 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1
-  # def show
-  #   render json: @user
-  # end
-
-  #show the user if they are the one logged in
   def show
-    render json: get_current_user
+    render json: @user
   end
+  
 
   # POST /users
   def create

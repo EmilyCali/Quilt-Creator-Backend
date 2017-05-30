@@ -37,7 +37,9 @@ class ApplicationController < ActionController::API
     User.find(decoded_jwt[0]["user"]["id"])
   end
 
-  
+  def show
+    render json: get_current_user
+  end
 
   #check the current user against the id to validate the authorization
   def authorize_user
