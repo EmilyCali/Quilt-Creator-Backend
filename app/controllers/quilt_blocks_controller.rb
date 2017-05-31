@@ -62,6 +62,6 @@ class QuiltBlocksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def quilt_block_params
-      params.require(:quilt_block).permit(:id, :img, :num_pieces, :piece_size, :difficulty, :title, :style, :user_id, :triangles, :squares)
+      params.require(:quilt_block).permit( :img, :num_pieces, :piece_size, :difficulty, :title, :style, :user_id, :triangles, :squares)
     end
 end

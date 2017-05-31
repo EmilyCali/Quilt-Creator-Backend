@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def show
     render json: @user
   end
-  
+
 
   # POST /users
   def create
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    #validate destroy with current user
+    #validate destroy with current user and destroy all associated quilt_blocks
     @user.destroy
   end
 
