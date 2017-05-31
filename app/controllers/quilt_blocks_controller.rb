@@ -19,29 +19,13 @@ class QuiltBlocksController < ApplicationController
 
   # POST /quilt_blocks
   def create
-
-    #decoded_jwt = decode_token(bearer_token)
-
-    # quilt_block_hash = {
-    #   title: quilt_block_params[:title],
-    #   difficulty: quilt_block_params[:difficulty],
-    #   num_pieces: quilt_block_params[:num_pieces],
-    #   piece_size: quilt_block-params[:piece_size],
-    #   style: quilt_block-params[:style],
-    #   triangles: quilt_block_params[:triangles],
-    #   squares: quilt_block_params[:squares]
-    #   user_id: decoded_jwt[0]['user']['id']
-    # }
-    #@current_user = #User.find(get_current_user.id)
-    #p @current_user
+    #byebug
     @quilt_block = QuiltBlock.new(quilt_block_params)
-    #@user = get_current_user
+    @user = get_current_user
 
-    #@quilt_block.user_id = @userID
-    #@quilt_block.user_id = @user.id
-
+    @quilt_block.user_id = @user.id
     # p @current_user.id
-    # quilt_block_params[:user_id] = @current_user.id
+    #quilt_block_params[:user_id] = @user.id
 
 
     if @quilt_block.save
@@ -62,7 +46,7 @@ class QuiltBlocksController < ApplicationController
 
   # DELETE /quilt_blocks/1
   def destroy
-    if @quilt_block.user_id == get_current_user.id
+    if @quilt_block.user_id == @user.id
       @quilt_block.destroy
       render json: {status: 200, message: "DELETED"}
     else
@@ -78,6 +62,6 @@ class QuiltBlocksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def quilt_block_params
-      params.require(:quilt_block).permit(:img, :num_pieces, :piece_size, :difficulty, :title, :style, :user_id, :triangles, :squares, :id)
+      params.require(:quilt_block).permit(:id, :img, :num_pieces, :piece_size, :difficulty, :title, :style, :user_id, :triangles, :squares)
     end
 end
