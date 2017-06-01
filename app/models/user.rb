@@ -8,6 +8,7 @@ class User < ApplicationRecord
   #one to many relationship
   #has_many :quilts
 
-  has_many :quilt_blocks
+  #makes it so that there is a relationship and when a user is destroyed so too should be the quilt_blocks
+  has_many :quilt_blocks, dependent: :destroy
   #validates_associated :quilts
 end

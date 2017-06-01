@@ -50,7 +50,7 @@ class QuiltBlocksController < ApplicationController
       @quilt_block.destroy
       render json: {status: 200, message: "DELETED"}
     else
-      render json: {status: 401, message: "You don't have permission to delete a recipe that isn't yours!"}
+      render json: {status: 401, message: "You don't have permission to delete somwething that isn't yours!"}
     end
   end
 

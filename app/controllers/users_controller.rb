@@ -64,7 +64,11 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     #validate destroy with current user and destroy all associated quilt_blocks
-    @user.destroy
+      @user.destroy
+    #   render json: {status: 200, message: "DELETED USER AND QUILTBLOCKS"}
+    # else
+    #   render json: {status: 401, message: "you aren't who you say you are"}
+    # end
   end
 
   private #================================
