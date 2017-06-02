@@ -27,8 +27,11 @@ class QuiltBlocksController < ApplicationController
     # p @current_user.id
     #quilt_block_params[:user_id] = @user.id
 
-
-    if @quilt_block.save
+    if @quilt_block.triangles + @quilt_block.squares != @quilt_block.num_pieces
+      render json: {status: 422, message: "sum of parts does not match, cannot create"}
+    # elsif @user.id != get_current_user.id
+    #   render json: {status: 401, message: "Please login to create a quilt_block"}
+    elsif @quilt_block.save
       render json: @quilt_block, status: :created, location: @quilt_block
     else
       render json: @quilt_block.errors, status: :unprocessable_entity
