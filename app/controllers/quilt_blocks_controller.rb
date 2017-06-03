@@ -1,5 +1,7 @@
 class QuiltBlocksController < ApplicationController
-  before_action :set_quilt_block, only: [:show, :update, :destroy]
+  before_action :set_quilt_block, only: [:show]
+  #taken out of above because we are not using them
+  #:update, :destroy
   #before_action :authorize_quilt_create except: [:index, :show, :create]
 
   # GET /quilt_blocks
@@ -48,14 +50,15 @@ class QuiltBlocksController < ApplicationController
   # end
 
   # DELETE /quilt_blocks/1
-  def destroy
-    if @quilt_block.user_id == @user.id
-      @quilt_block.destroy
-      render json: {status: 200, message: "DELETED"}
-    else
-      render json: {status: 401, message: "You don't have permission to delete somwething that isn't yours!"}
-    end
-  end
+  # def destroy
+  #   @user = get_current_user
+  #   if @quilt_block.user_id == @user.id
+  #     @quilt_block.destroy
+  #     render json: {status: 200, message: "DELETED"}
+  #   else
+  #     render json: {status: 401, message: "You don't have permission to delete somwething that isn't yours!"}
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
