@@ -16,6 +16,8 @@ class QuiltBlocksController < ApplicationController
   def show
     #@quilt_block = QuiltBlock.find_by_id(params[:id])
     #render json: {quilt_block: @quilt_block, status: 200}
+    @user = get_current_user
+    @quilt_block = QuiltBlock.includes(:user).find(params[:id])
     render json: @quilt_block
   end
 
